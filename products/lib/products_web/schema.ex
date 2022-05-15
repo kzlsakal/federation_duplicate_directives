@@ -16,8 +16,9 @@ defmodule ProductsWeb.Schema do
     field(:upc, non_null(:string))
     field(:name, non_null(:string))
 
-    field(:price, :integer, deprecate: "This field is deprecated") do
-      deprecate("This field is truly deprecated")
+    field(:price, :integer) do
+      directive(:requires, fields: ["foo"])
+      directive(:requires, fields: ["bar"])
     end
   end
 
