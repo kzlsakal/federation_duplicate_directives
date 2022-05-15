@@ -15,7 +15,10 @@ defmodule ProductsWeb.Schema do
     key_fields("upc")
     field(:upc, non_null(:string))
     field(:name, non_null(:string))
-    field(:price, :integer)
+
+    field(:price, :integer, deprecate: "This field is deprecated") do
+      deprecate("This field is truly deprecated")
+    end
   end
 
   defp resolve_product_by_upc(%{upc: upc}, _ctx),
